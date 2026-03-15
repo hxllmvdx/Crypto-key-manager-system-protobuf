@@ -1,0 +1,1 @@
+# Protobuf for CKMS
