@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package common.v1;
+
+enum KeyType {
+  KEY_TYPE_UNSPECIFIED = 0;
+  KEY_TYPE_AES_128 = 1;
+  KEY_TYPE_AES_256 = 2;
+  KEY_TYPE_RSA_2048 = 3;
+}

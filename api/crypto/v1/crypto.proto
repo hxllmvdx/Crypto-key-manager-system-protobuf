@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package crypto.v1;
+
+import "api/common/v1/types.proto";
+
+message EncryptRequest {
+  common.v1.KeyType key_type = 1;
+  bytes plaintext = 2;
+}
+
+message EncryptResponse {
+  bytes ciphertext = 1;
+}
+
+message DecryptRequest {
+  bytes ciphertext = 1;
+}
+
+message DecryptResponse {
+  bytes plaintext = 1;
+}
+
+message SignRequest {
+  string key_id = 1;
+  bytes message = 2;
+}
+
+message SignResponse {
+  bytes signature = 1;
+}
+
+message VerifyRequest {
+  string key_id = 1;
+  bytes message = 2;
+  bytes signature = 3;
+}
+
+enum VerificationResult {
+  VERIFICATION_RESULT_UNSPECIFIED = 0;
+  VERIFICATION_RESULT_OK = 1;
+  VERIFICATION_RESULT_INVALID = 2;
+  VERIFICATION_RESULT_KEY_MISSING = 4;
+  VERIFICATION_RESULT_ERROR = 3;
+}
+
+message VerifyResponse {
+  VerificationResult result = 1;
+}
+
+service CryptoService {
+  rpc Encrypt(EncryptRequest) returns (EncryptResponse);
+  rpc Decrypt(DecryptRequest) returns (DecryptResponse);
+  rpc Sign(SignRequest) returns (SignResponse);
+  rpc Verify(VerifyRequest) returns (VerifyResponse);
+}

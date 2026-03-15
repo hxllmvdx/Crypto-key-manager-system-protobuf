@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package kms.v1;
+
+import "api/common/v1/types.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/hxllmvdx/Crypto-key-manager-system/services/kms/gen/kms/v1;kmsv1";
+
+message KeyMetadata {
+  string key_id = 1;
+  uint32 version = 2;
+  common.v1.KeyType type = 3;
+  google.protobuf.Timestamp created_at = 4;
+  string status = 5;
+}
+
+message Key {
+  KeyMetadata metadata = 1;
+  bytes key_material = 2;
+}
+
+message GetKeyRequest {
+  string key_id = 1;
+}
+
+message GetKeyResponse {
+  Key key = 1;
+}
+
+message GenerateKeyRequest {
+  common.v1.KeyType type = 1;
+}
+
+message GenerateKeyResponse {
+  KeyMetadata metadata = 1;
+}
+
+message RotateKeyRequest {
+  string key_id = 1;
+}
+
+message RotateKeyResponse {
+  KeyMetadata metadata = 1;
+}
+
+message ListKeysRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message ListKeysResponse {
+  KeyMetadata keys = 1;
+}
+
+service KMSService {
+  rpc GenerateKey(GenerateKeyRequest) returns (GenerateKeyResponse);
+  rpc GetKey(GetKeyRequest) returns (GetKeyResponse);
+  rpc ListKeys(ListKeysRequest) returns (stream ListKeysResponse);
+  rpc RotateKey(RotateKeyRequest) returns (RotateKeyResponse);
+}
