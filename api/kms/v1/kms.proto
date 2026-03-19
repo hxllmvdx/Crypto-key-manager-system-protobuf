@@ -13,7 +13,7 @@ message KeyMetadata {
   uint32 version = 2;
   common.v1.KeyType type = 3;
   google.protobuf.Timestamp created_at = 4;
-  string status = 5;
+  common.v1.KeyStatus status = 5;
 }
 
 message Key {
