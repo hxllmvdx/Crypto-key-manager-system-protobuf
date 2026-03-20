@@ -19,6 +19,7 @@ message KeyMetadata {
 message Key {
   KeyMetadata metadata = 1;
   bytes key_material = 2;
+  bytes nonce_bytes = 3;
 }
 
 message GetKeyRequest {
