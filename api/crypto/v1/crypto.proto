@@ -8,17 +8,19 @@ import "api/kms/v1/kms.proto";
 option go_package = "github.com/hxllmvdx/Crypto-key-management-system/services/kms/gen/crypto/v1;cryptov1";
 
 message EncryptRequest {
-  kms.v1.Key key = 1;
+  string key_id = 1;
   bytes plaintext = 2;
 }
 
 message EncryptResponse {
   bytes ciphertext = 1;
+  bytes nonce_bytes = 2;
 }
 
 message DecryptRequest {
-  kms.v1.Key key = 1;
+  string key_id = 1;
   bytes ciphertext = 2;
+  bytes nonce_bytes = 3;
 }
 
 message DecryptResponse {
