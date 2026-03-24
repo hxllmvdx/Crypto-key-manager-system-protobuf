@@ -3,7 +3,6 @@ syntax = "proto3";
 package kms.v1;
 
 import "api/common/v1/types.proto";
-import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/hxllmvdx/Crypto-key-management-system/services/kms/gen/kms/v1;kmsv1";
@@ -13,7 +12,8 @@ message KeyMetadata {
   uint32 version = 2;
   common.v1.KeyType type = 3;
   google.protobuf.Timestamp created_at = 4;
-  common.v1.KeyStatus status = 5;
+  google.protobuf.Timestamp updated_at = 5;
+  common.v1.KeyStatus status = 6;
 }
 
 message Key {
@@ -46,11 +46,10 @@ message RotateKeyResponse {
 }
 
 message ListKeysRequest {
-  google.protobuf.Empty empty = 1;
 }
 
 message ListKeysResponse {
-  KeyMetadata keys = 1;
+  KeyMetadata key = 1;
 }
 
 service KMSService {
