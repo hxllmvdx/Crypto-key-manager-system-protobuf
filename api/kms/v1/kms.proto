@@ -4,6 +4,7 @@ package kms.v1;
 
 import "api/common/v1/types.proto";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
 
 option go_package = "github.com/hxllmvdx/Crypto-key-management-system/services/kms/gen/kms/v1;kmsv1";
 
@@ -46,9 +47,18 @@ message RotateKeyResponse {
 }
 
 message ListKeysRequest {
+  google.protobuf.Empty empty = 1;
 }
 
 message ListKeysResponse {
+  KeyMetadata key = 1;
+}
+
+message RotateEnabledKeysThatExpiredRequest {
+  google.protobuf.Empty empty = 1;
+}
+
+message RotateEnabledKeysThatExpiredResponse {
   KeyMetadata key = 1;
 }
 
@@ -57,4 +67,5 @@ service KMSService {
   rpc GetKey(GetKeyRequest) returns (GetKeyResponse);
   rpc ListKeys(ListKeysRequest) returns (stream ListKeysResponse);
   rpc RotateKey(RotateKeyRequest) returns (RotateKeyResponse);
+  rpc RotateEnabledKeysThatExpired(RotateEnabledKeysThatExpiredRequest) returns (stream RotateEnabledKeysThatExpiredResponse);
 }
