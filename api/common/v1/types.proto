@@ -12,11 +12,12 @@ enum KeyType {
 }
 
 enum KeyStatus {
-  KEY_STATUS_UNSPECIFIED = 0;
-  KEY_STATUS_ENABLED = 1;
-  KEY_STATUS_DISABLED = 2;
-  KEY_STATUS_DESTROYED = 3;
-  KEY_STATUS_PENDING_ROTATION = 4;
-  KEY_STATUS_PENDING_DEACTIVATION = 5;
-  KEY_STATUS_EXPIRED = 6;
+  KEY_STATUS_UNSPECIFIED = 0; // invalid key
+  KEY_STATUS_ENABLED = 1; // valid key
+  KEY_STATUS_DISABLED = 2; // disabled key
+  KEY_STATUS_DESTROYED = 3; // deleted key
+  KEY_STATUS_PENDING_ROTATION = 4; // waiting rotation caused by user
+  KEY_STATUS_PENDING_DEACTIVATION = 5; // waiting deactivation caused by user
+  KEY_STATUS_EXPIRED = 6; // expired keys that have been updated by server automatically
+  KEY_STATUS_ROTATED = 7; // rotated by user
 }
