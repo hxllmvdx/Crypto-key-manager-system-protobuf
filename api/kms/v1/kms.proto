@@ -93,6 +93,6 @@ service KMSService {
   rpc RotateKey(RotateKeyRequest) returns (RotateKeyResponse);
   rpc RotateEnabledKeysThatExpired(RotateEnabledKeysThatExpiredRequest) returns (stream RotateEnabledKeysThatExpiredResponse);
   rpc DisableKey(DisableKeyRequest) returns (DisableKeyResponse);
-  rpc DestroyKey(DestroyKeyRequest) returns (DestroyKeyRequest);
+  rpc DestroyKey(DestroyKeyRequest) returns (DestroyKeyResponse);
   rpc RestoreKey(RestoreKeyRequest) returns (RestoreKeyResponse);
 }
