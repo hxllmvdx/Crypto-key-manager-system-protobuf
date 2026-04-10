@@ -54,14 +54,6 @@ message ListKeysResponse {
   KeyMetadata key = 1;
 }
 
-message RotateEnabledKeysThatExpiredRequest {
-  google.protobuf.Empty empty = 1;
-}
-
-message RotateEnabledKeysThatExpiredResponse {
-  KeyMetadata key = 1;
-}
-
 message DisableKeyRequest {
   string key_id = 1;
 }
@@ -91,7 +83,6 @@ service KMSService {
   rpc GetKey(GetKeyRequest) returns (GetKeyResponse);
   rpc ListKeys(ListKeysRequest) returns (stream ListKeysResponse);
   rpc RotateKey(RotateKeyRequest) returns (RotateKeyResponse);
-  rpc RotateEnabledKeysThatExpired(RotateEnabledKeysThatExpiredRequest) returns (stream RotateEnabledKeysThatExpiredResponse);
   rpc DisableKey(DisableKeyRequest) returns (DisableKeyResponse);
   rpc DestroyKey(DestroyKeyRequest) returns (DestroyKeyResponse);
   rpc RestoreKey(RestoreKeyRequest) returns (RestoreKeyResponse);
