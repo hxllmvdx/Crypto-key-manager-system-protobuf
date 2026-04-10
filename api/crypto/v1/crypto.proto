@@ -2,9 +2,6 @@ syntax = "proto3";
 
 package crypto.v1;
 
-import "api/common/v1/types.proto";
-import "api/kms/v1/kms.proto";
-
 option go_package = "github.com/hxllmvdx/Crypto-key-management-system/services/kms/gen/crypto/v1;cryptov1";
 
 message EncryptRequest {
