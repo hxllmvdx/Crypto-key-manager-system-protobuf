@@ -6,7 +6,8 @@ option go_package = "github.com/hxllmvdx/Crypto-key-management-system/services/k
 
 message EncryptRequest {
   string key_id = 1;
-  bytes plaintext = 2;
+  string user_id = 2;
+  bytes plaintext = 3;
 }
 
 message EncryptResponse {
@@ -16,8 +17,9 @@ message EncryptResponse {
 
 message DecryptRequest {
   string key_id = 1;
-  bytes ciphertext = 2;
-  bytes nonce_bytes = 3;
+  string user_id = 2;
+  bytes ciphertext = 3;
+  bytes nonce_bytes = 4;
 }
 
 message DecryptResponse {
